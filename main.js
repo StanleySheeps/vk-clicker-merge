@@ -1,34 +1,24 @@
-// main.js — с проверкой и ожиданием VKBridge
+// main.js — для ВК Mini Apps (работает на телефоне)
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = document.getElementById('app');
   console.log('🔥 main.js: старт');
 
-  // Функция-ожидание VKBridge
-  function waitForVKBridge(retries = 50) {
-    if (window.VKBridge) {
-      console.log('✅ VKBridge найден');
-      initApp();
-      return;
-    }
-
-    if (retries <= 0) {
-      console.error('🔴 VKBridge не загрузился за отведённое время');
-      app.innerHTML = '<h1>🔴 VKBridge не загрузился</h1>';
-      return;
-    }
-
-    console.log('⏳ Ожидаем VKBridge...');
-    setTimeout(() => waitForVKBridge(retries - 1), 100); // ждём 100мс
+  // VKBridge доступен как VkBridge (с большой B!) в Mini Apps
+  if (typeof window.VkBridge === 'undefined') {
+    console.error('🔴 VkBridge не доступен');
+    app.innerHTML = '<h1>🔴 VkBridge не найден</h1>';
+    return;
   }
 
-  function initApp() {
-    // Инициализация
-    VKBridge.send('VKWebAppInit')
-      .then(() => {
-        console.log('✅ VKWebAppInit отправлен');
-        return VKBridge.send('VKWebAppGetUserInfo');
-      })
+  console.log('✅ VkBridge найден');
+
+  try {
+    // Инициализация приложения
+    window.VkBridge.send('VKWebAppInit');
+
+    // Получаем информацию о пользователе
+    window.VkBridge.send('VKWebAppGetUserInfo')
       .then(user => {
         console.log('👤 Пользователь:', user);
         app.innerHTML = `
@@ -39,10 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       })
       .catch(err => {
-        console.error('❌ Ошибка VK:', err);
-        app.innerHTML = `<h1>Ошибка: ${err.error_data?.error_msg || 'Неизвестная ошибка'}</h1>`;
+        console.error('❌ Ошибка:', err);
+        app.innerHTML = '<h1>Ошибка получения данных</h1>';
       });
+  } catch (e) {
+    console.error('🔴 Ошибка инициализации:', e);
+    app.innerHTML = '<h1>Критическая ошибка</h1>';
   }
-
-  waitForVKBridge();
 });

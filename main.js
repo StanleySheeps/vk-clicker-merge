@@ -1,39 +1,48 @@
-// main.js — для ВК Mini Apps (работает на телефоне)
+// main.js — для Mini Apps ВК (гарантированная инициализация)
 
+console.log('🔥 main.js: старт');
+
+// Попробуем инициализировать сразу — даже до DOM
+if (typeof window.VkBridge !== 'undefined') {
+  console.log('✅ VkBridge доступен — инициализируем');
+  try {
+    window.VkBridge.send('VKWebAppInit');
+  } catch (e) {
+    console.error('🔴 Ошибка VKWebAppInit:', e);
+  }
+} else {
+  console.log('⏳ VkBridge ещё не доступен — ждём...');
+}
+
+// После загрузки DOM — снова проверим
 document.addEventListener('DOMContentLoaded', () => {
   const app = document.getElementById('app');
-  console.log('🔥 main.js: старт');
 
-  // VKBridge доступен как VkBridge (с большой B!) в Mini Apps
   if (typeof window.VkBridge === 'undefined') {
-    console.error('🔴 VkBridge не доступен');
+    console.error('🔴 VkBridge не доступен даже после загрузки');
     app.innerHTML = '<h1>🔴 VkBridge не найден</h1>';
     return;
   }
 
-  console.log('✅ VkBridge найден');
+  console.log('✅ VkBridge найден в DOM');
 
-  try {
-    // Инициализация приложения
-    window.VkBridge.send('VKWebAppInit');
-
-    // Получаем информацию о пользователе
-    window.VkBridge.send('VKWebAppGetUserInfo')
-      .then(user => {
-        console.log('👤 Пользователь:', user);
-        app.innerHTML = `
-          <div class="card">
-            <img src="${user.photo_200}" alt="Аватар" class="avatar" />
-            <h1>Привет, ${user.first_name}!</h1>
-          </div>
-        `;
-      })
-      .catch(err => {
-        console.error('❌ Ошибка:', err);
-        app.innerHTML = '<h1>Ошибка получения данных</h1>';
-      });
-  } catch (e) {
-    console.error('🔴 Ошибка инициализации:', e);
-    app.innerHTML = '<h1>Критическая ошибка</h1>';
-  }
+  // Повторная инициализация (на всякий случай)
+  window.VkBridge.send('VKWebAppInit')
+    .then(() => {
+      console.log('✅ VKWebAppInit отправлен');
+      return window.VkBridge.send('VKWebAppGetUserInfo');
+    })
+    .then(user => {
+      console.log('👤 Пользователь:', user);
+      app.innerHTML = `
+        <div class="card">
+          <img src="${user.photo_200}" alt="Аватар" class="avatar" />
+          <h1>Привет, ${user.first_name}!</h1>
+        </div>
+      `;
+    })
+    .catch(err => {
+      console.error('❌ Ошибка:', err);
+      app.innerHTML = '<h1>Ошибка получения данных</h1>';
+    });
 });

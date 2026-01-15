@@ -3,10 +3,10 @@
 console.log('🔥 main.js: старт');
 
 // Попробуем инициализировать сразу — даже до DOM
-if (typeof window.VkBridge !== 'undefined') {
+if (typeof window.vkBridge !== 'undefined') {
   console.log('✅ VkBridge доступен — инициализируем');
   try {
-    window.VkBridge.send('VKWebAppInit');
+    window.vkBridge.send('VKWebAppInit');
   } catch (e) {
     console.error('🔴 Ошибка VKWebAppInit:', e);
   }
@@ -18,7 +18,7 @@ if (typeof window.VkBridge !== 'undefined') {
 document.addEventListener('DOMContentLoaded', () => {
   const app = document.getElementById('app');
 
-  if (typeof window.VkBridge === 'undefined') {
+  if (typeof window.vkBridge === 'undefined') {
     console.error('🔴 VkBridge не доступен даже после загрузки');
     app.innerHTML = '<h1>🔴 VkBridge не найден</h1>';
     return;
@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('✅ VkBridge найден в DOM');
 
   // Повторная инициализация (на всякий случай)
-  window.VkBridge.send('VKWebAppInit')
+  window.vkBridge.send('VKWebAppInit')
     .then(() => {
       console.log('✅ VKWebAppInit отправлен');
-      return window.VkBridge.send('VKWebAppGetUserInfo');
+      return window.vkBridge.send('VKWebAppGetUserInfo');
     })
     .then(user => {
       console.log('👤 Пользователь:', user);

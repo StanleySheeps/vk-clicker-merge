@@ -1,5 +1,3 @@
-// main.js — работает везде
-
 document.addEventListener('DOMContentLoaded', () => {
   const app = document.getElementById('app');
 

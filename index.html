@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Мой кликер</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="browser.min.js"></script>
+  <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
-  <div id="app">Загрузка...</div>
-  <script src="main.js"></script>
+  <!-- Подключаем локальную копию vk-bridge -->
+  <script src="lib/browser.min.js"></script>   
+  <!-- Точка входа — как модуль -->
+  <script type="module" src="main.js"></script>
 </body>
 </html>

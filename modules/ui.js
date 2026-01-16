@@ -2,9 +2,10 @@
 
 /**
  * Создаем основной контейнер для приложения
- * @param { 'Текстовое содержимое для отображения' } textContent 
+ * @param { string } textContent Текстовое содержимое для отображения
+ * @returns { HTMLElement }
  */
-export function createAppContainer(textContent) {
+export function createAppContainer(text = '☕ Загрузка элементов VK Mini Apps!') {
   let app = document.getElementById('app-container');
   
   // Если элемент уже существует, используем его
@@ -18,8 +19,7 @@ export function createAppContainer(textContent) {
     }
   }
   
-  // Присваиваем текстовое содержимое
-  app.textContent = textContent || '☕ Загрузка элементов VK Mini Apps!';
+  console.log(text);
 }
 
 // Создание контейнера для вывода ошибок

@@ -45,13 +45,15 @@ export function waitForVkBridgeInit(maxAttempts = 300, interval = 100) {
  */
 export async function adjustWindowSize(vkBridge) {
   try {
+    if (typeof vkBridge.supportsAsync !== 'function') {
+      console.warn('⚠️ vkBridge.supportsAsync не поддерживается');
+      return;
+    }
+
     const isSupported = await vkBridge.supportsAsync('VKWebAppResizeWindow');
     if (isSupported) {
-      console.log('✅ Поддерживается VKWebAppResizeWindow');
       await vkBridge.send('VKWebAppResizeWindow', { width: 800, height: 1000 });
       console.log('✅ Окно изменено: 800×1000');
-    } else {
-      console.log('⚠️ VKWebAppResizeWindow не поддерживается');
     }
   } catch (err) {
     console.error('❌ Ошибка изменения окна:', err);

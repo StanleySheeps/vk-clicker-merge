@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await adjustWindowSize(vkBridge);
 
     // Шаг 3: Получение пользователя
-    createAppContainer('☕ Загружаем профиль...');
+    createAppContainer();
     const user = await vkBridge.send('VKWebAppGetUserInfo');
     createUserContainer(user);
 

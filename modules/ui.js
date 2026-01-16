@@ -1,11 +1,11 @@
 // ui.js - модуль пользовательского интерфейса
 
 /**
- * Создаем основной контейнер для приложения
- * @param { string } textContent Текстовое содержимое для отображения
- * @returns { HTMLElement }
+ * Создаёт или возвращает существующий контейнер приложения
+ * @returns {HTMLElement}
  */
-export function createAppContainer(text = '☕ Загрузка элементов VK Mini Apps!') {
+
+export function createAppContainer() {
   let app = document.getElementById('app-container');
   
   // Если элемент уже существует, используем его
@@ -14,12 +14,12 @@ export function createAppContainer(text = '☕ Загрузка элементо
     app = document.createElement('div');
     app.id = 'app-container';
     document.body.appendChild(app); // Добавляем элемент в DOM
+    console.log('✅ Контейнер приложения создан')
     } catch (error) {
-      console.error('Ошибка при создании контейнера приложения:', error);
+      console.error('❌ Ошибка при создании контейнера приложения:', error);
     }
   }
-  
-  console.log(text);
+  return app;
 }
 
 // Создание контейнера для вывода ошибок
@@ -35,7 +35,13 @@ export function createErrorContainer(textContent) {
 
       // Добавляем элемент в DOM
       const app = document.getElementById('app-container');
-      app.appendChild(errorContainer);
+      if (app) {
+        try {
+          app.appendChild(errorContainer);
+        } catch (error) {
+          console.error('❌ Контейнер приложения не найден', error);
+        }
+      }
     } catch (error) {
       console.error('Ошибка при создании контейнера для ошибок:', error);
     }
@@ -63,7 +69,13 @@ export function createUserContainer(user) {
 
       // Добавляем элемент в DOM
       const app = document.getElementById('app-container');
-      app.appendChild(userContainer);
+      if (app) {
+        try {
+          app.appendChild(userContainer);
+        } catch (error) {
+          console.error('❌ Контейнер приложения не найден', error);
+        }
+      }
     } catch (error) {
       console.error('Ошибка при создании контейнера для пользователя:', error);
     }

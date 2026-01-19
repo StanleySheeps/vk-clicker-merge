@@ -72,6 +72,7 @@ export function createUserContainer(user) {
       if (app) {
         try {
           app.appendChild(userContainer);
+          console.log('✅ Контейнер пользователя создан')
         } catch (error) {
           console.error('❌ Контейнер приложения не найден', error);
         }

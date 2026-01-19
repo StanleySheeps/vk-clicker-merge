@@ -9,7 +9,16 @@ body {
 }
 
 .game-modes-container {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
   background: #8dc0ea;
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 700px;
+  width: 100%;
 }
 
 .user-container {

@@ -25,15 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     createUserContainer(user);
 
     // Шаг 5: Создание контейнера для режимов игры
-    const gameModesContainer = createGameModesContainer();
-
-    // Шаг 6: Создание кнопок навигации
-    const onNavigate = (mode) => {
-      console.log(`🎮 Переход к режиму: ${mode.id}`);
-      // Логика отображения контента
-    };
-
-    createFooterContainer(gameModesContainer, onNavigate);
+    createGameModesContainer();
 
   } catch (err) {
     console.error('🔴 Фатальная ошибка:', err);

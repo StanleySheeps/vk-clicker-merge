@@ -35,9 +35,9 @@ body {
   left: 0;
   width: 100%;
   background: black;
-  border-top: 1px solid #e6e8eb;
-  padding: 12px 0;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #e6e8eb;
+  padding: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   display: flex;
   justify-content: space-around;
   z-index: 100; /* Сверху всех */
@@ -45,7 +45,7 @@ body {
 }
 
 .user-container:hover {
-  transform: translateY(-2px);
+  transform: translateY(2px);
 }
 
 .avatar {

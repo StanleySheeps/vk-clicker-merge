@@ -1,7 +1,7 @@
 // main.js — основной файл приложения, главный модуль
 
 import { waitForVkBridgeInit, adjustWindowSize } from './modules/vk.js';
-import { createAppContainer, createErrorContainer, createGameModesContainer, createUserContainer } from './modules/ui.js';
+import { createAppContainer, createErrorContainer, createFooterContainer, createGameModesContainer, createUserContainer } from './modules/ui.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   createAppContainer(); // Ожидание загрузки контейнера
@@ -17,9 +17,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     createAppContainer();
     const user = await vkBridge.send('VKWebAppGetUserInfo');
     createUserContainer(user);
-
+    
     // Шаг 4: Создание динамического контейнера для режимов игры
     createGameModesContainer();
+
+    // Шаг 5: Создание кнопок навигации
+    createFooterContainer();    
 
   } catch (err) {
     console.error('🔴 Фатальная ошибка:', err);

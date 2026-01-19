@@ -132,3 +132,58 @@ export function createGameModesContainer() {
     gameModesContainer.removeChild(gameModesContainer.firstChild);
   }
 }
+
+// Создание контейнера для кнопок навигации
+export function createFooterContainer() {
+  let footerContainer = document.getElementById('footer-container');
+
+  // Если элемент уже существует, используем его
+  if (!footerContainer) {
+    try {
+      footerContainer = document.createElement('div');
+      footerContainer.id = 'footer-container';
+      footerContainer.className = 'footer-container';
+
+      // Добавляем элемент в DOM
+      const app = document.getElementById('game-modes-container');
+      if (app) {
+        try {
+          app.appendChild(footerContainer);
+          console.log('✅ Контейнер для кнопок навигации создан')
+        } catch (error) {
+          console.error('❌ Контейнер приложения не найден', error);
+        }
+      }
+    } catch (error) {
+      console.error('Ошибка при создании контейнера для кнопок навигации:', error);
+    }
+  }
+  // Очищаем содержимое
+  while (footerContainer.firstChild) {
+    footerContainer.removeChild(footerContainer.firstChild);
+  }
+
+  // Создаем кнопки навигации
+  const navigation = ['MARKET', 'EGGS', 'PETS', 'FRIENDS', 'TASKS'];
+
+  navigation.forEach((item, index) => {
+    const button = document.createElement('button');
+    button.textContent = item;
+    button.className = 'navigation-button';
+
+    button.addEventListener('click', () => {
+      // Реализация перехода по кнопкам
+      const gameModesContainer = document.getElementById('game-modes-container');
+      gameModesContainer.textContent = `Вы перешли на страницу ${item}`;
+      highlightActiveButton(navigation[index]);
+    });
+    footerContainer.appendChild(button);
+  });
+}
+
+// Вспомогательная функция для подсветки активной кнопки
+function highlightActiveButton(activeButton) {
+  const buttons = document.querySelectorAll('.navigation-button');
+  buttons.forEach(button => button.classList.remove('active'));
+  activeButton.classList.add('active');
+}

@@ -1,4 +1,4 @@
-import { GAME_MODES } from "../game/modes";
+import { GAME_MODES } from "./modules/game/modes.js";
 
 /**
  * Создаёт одну кнопку навигации с иконкой и текстом

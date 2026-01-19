@@ -117,6 +117,7 @@ export function createGameModesContainer() {
       if (app) {
         try {
           app.appendChild(gameModesContainer);
+          console.log('✅ Контейнер для режимов игры создан')
         } catch (error) {
           console.error('❌ Контейнер приложения не найден', error);
         }

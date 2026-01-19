@@ -13,6 +13,8 @@ export function waitForVkBridgeInit(maxAttempts = 300, interval = 100) {
       if (typeof window.vkBridge !== 'undefined' && typeof window.vkBridge.send === 'function') {
         console.log(`✅ vkBridge найден на попытке ${attempts}`);
 
+        window.vkBridge.subscribe((e) => console.log(e)); // Подписка на события
+
         window.vkBridge.send('VKWebAppInit')
         .then(() => {
           console.log('✅ VKWebAppInit отправлен');

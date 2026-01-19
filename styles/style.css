@@ -1,74 +1,50 @@
-body {
+/* === 1. Сброс и базовые стили === */
+* {
   margin: 0;
-  font-family: sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'VK Sans', sans-serif; /* Шрифт VK, fallback — sans-serif */
   background: #e6e8eb;
+  color: #2d2e33;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  padding: 20px;
+  line-height: 1.5;
 }
 
-.game-modes-container {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  background: #8dc0ea;
-  border-radius: 16px;
-  padding: 40px;
-  max-width: 700px;
+/* === 2. Контейнер приложения — центрирование и ограничение ширины === */
+#app-container {
   width: 100%;
+  max-width: 720px; /* Стандарт VK Mini Apps */
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* === 3. Контейнер пользователя — аватар и приветствие === */
 .user-container {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
   background: white;
   border-radius: 16px;
-  padding: 40px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  padding: 24px 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   max-width: 300px;
   width: 100%;
+  margin-bottom: 24px;
+  position: relative;
   z-index: 10;
+  transition: transform 0.2s ease;
 }
 
-.footerContainer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #333;
-  color: #fff;
-  display: flex;
-  justify-content: space-around;
-  padding: auto;
-}
-
-.navigation-button {
-  background-color: transparent;
-  border: none;
-  color: inherit;
-  font-size: 16px;
-  cursor: pointer;
-  outline: none;
-}
-
-.navigation-button.active {
-  color: #ff6600;
-}
-
-.error-container {
-  text-align: center;
-  background: rgb(171, 135, 168);
-  border-radius: 16px;
-  padding: 40px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
-  max-width: 300px;
-  width: 100%;  
+.user-container:hover {
+  transform: translateY(-2px);
 }
 
 .avatar {
@@ -76,11 +52,136 @@ body {
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 16px;
+  border: 3px solid #8dc0ea;
+  margin-bottom: 12px;
 }
 
 h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d2e33;
   margin: 0;
+}
+
+/* === 4. Контейнер режимов игры — центральный блок === */
+#game-modes-container {
+  width: 100%;
+  text-align: center;
+  background: white;
+  border-radius: 16px;
+  padding: 40px 32px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* === 5. Контейнер навигации — фиксированное нижнее меню === */
+#footer-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  border-top: 1px solid #e6e8eb;
+  padding: 12px 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-around;
+  z-index: 100; /* Сверху всех */
+}
+
+/* === 6. Кнопки навигации — иконки + текст === */
+.navigation-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  color: #6d7885;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  flex: 1;
+  max-width: 90px;
+  min-width: 60px;
+}
+
+.navigation-button.active,
+.navigation-button:hover {
+  color: #4c8bf5; /* Синий цвет как в VK */
+}
+
+.navigation-button:active {
+  opacity: 0.7;
+}
+
+.navigation-button.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Иконка и текст — отдельно */
+.icon {
   font-size: 20px;
-  color: #333;
+  line-height: 1;
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.lock {
+  font-size: 14px;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+
+/* === 7. Контейнер ошибки — заметный, но не агрессивный === */
+.error-container {
+  text-align: center;
+  background: #ffebee;
+  color: #c62828;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: 14px;
+  max-width: 300px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(198, 40, 40, 0.15);
+  margin: 12px auto;
+}
+
+/* === 8. Адаптивность === */
+@media (max-width: 480px) {
+  body {
+    padding: 12px;
+  }
+
+  .user-container,
+  #game-modes-container {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .avatar {
+    width: 64px;
+    height: 64px;
+  }
+
+  h1 {
+    font-size: 16px;
+  }
+
+  .navigation-button {
+    font-size: 11px;
+    gap: 2px;
+  }
+
+  .icon {
+    font-size: 18px;
+  }
 }

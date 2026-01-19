@@ -10,10 +10,10 @@ import {
 } from './modules/ui/containers.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-  try {
-    // Шаг 1: Создаём основной контейнер
+  // Шаг 1: Создаём основной контейнер
     createAppContainer();
 
+  try {
     // Шаг 2: Инициализация vkBridge
     const vkBridge = await waitForVkBridgeInit();
 

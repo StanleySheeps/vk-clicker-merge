@@ -173,6 +173,4 @@ export function createFooterContainer() {
   while (footerContainer.firstChild) {
     footerContainer.removeChild(footerContainer.firstChild);
   }
-  // Cоздаем кнопки навигации
-  createNavigationButtons(footerContainer);
 }

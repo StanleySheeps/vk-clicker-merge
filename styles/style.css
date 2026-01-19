@@ -8,6 +8,10 @@ body {
   min-height: 100vh;
 }
 
+.game-modes-container {
+  background-color: #8dc0ea;
+}
+
 .user-container {
   position: absolute;
   top: 50%;

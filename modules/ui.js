@@ -100,3 +100,33 @@ export function createUserContainer(user) {
     userContainer.appendChild(avatarImg);
     userContainer.appendChild(greetingHeader);
 }
+
+// Создание динамического контейнера для режимов игры
+export function createGameModesContainer() {
+  let gameModesContainer = document.getElementById('game-modes-container');
+
+  // Если элемент уже существует, используем его
+  if(!gameModesContainer) {
+    try {
+      gameModesContainer = document.createElement('div');
+      gameModesContainer.id = 'game-modes-container';
+      gameModesContainer.className = 'game-modes-container';
+
+      // Добавляем элемент в DOM
+      const app = document.getElementById('app-container');
+      if (app) {
+        try {
+          app.appendChild(gameModesContainer);
+        } catch (error) {
+          console.error('❌ Контейнер приложения не найден', error);
+        }
+      }
+    } catch (error) {
+      console.error('Ошибка при создании контейнера для режимов игры:', error);
+    }
+  }
+  // Очищаем содержимое
+  while (gameModesContainer.firstChild) {
+    gameModesContainer.removeChild(gameModesContainer.firstChild);
+  }
+}

@@ -27,6 +27,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Шаг 5: Создание контейнера для режимов игры
     createGameModesContainer();
 
+    // Шаг 6: Создание футера
+    createFooterContainer();
+    
+
   } catch (err) {
     console.error('🔴 Фатальная ошибка:', err);
     createErrorContainer(`❌ ${err.message}`);

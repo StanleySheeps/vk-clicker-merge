@@ -1,10 +1,9 @@
-// ui.js - модуль пользовательского интерфейса
+import { createNavigationButtons } from "./buttons.js";
 
 /**
  * Создаёт или возвращает существующий контейнер приложения
  * @returns {HTMLElement}
  */
-
 export function createAppContainer() {
   let app = document.getElementById('app-container');
   
@@ -22,7 +21,10 @@ export function createAppContainer() {
   return app;
 }
 
-// Создание контейнера для вывода ошибок
+/**
+ * Создаёт контейнер для ошибок
+ * @param {string} text
+ */
 export function createErrorContainer(textContent) {
   let errorContainer = document.getElementById('error-container');
 
@@ -56,7 +58,10 @@ export function createErrorContainer(textContent) {
   errorContainer.textContent = textContent || '❌ Ошибка!';  
 }
 
-// Создание контейнера для приветствия пользователя
+/**
+ * Создаёт контейнер для пользователя
+ * @param {Object} user
+ */
 export function createUserContainer(user) {
   let userContainer = document.getElementById('user-container');
 
@@ -102,7 +107,10 @@ export function createUserContainer(user) {
     userContainer.appendChild(greetingHeader);
 }
 
-// Создание динамического контейнера для режимов игры
+/**
+ * Создаёт динамический контейнера для режимов игры
+ * @returns {HTMLElement}
+ */
 export function createGameModesContainer() {
   let gameModesContainer = document.getElementById('game-modes-container');
 
@@ -133,7 +141,10 @@ export function createGameModesContainer() {
   }
 }
 
-// Создание контейнера для кнопок навигации
+/**
+ * Создаёт контейнер для кнопок навигации
+ * @param {HTMLElement} container
+ */
 export function createFooterContainer() {
   let footerContainer = document.getElementById('footer-container');
 
@@ -145,7 +156,7 @@ export function createFooterContainer() {
       footerContainer.className = 'footer-container';
 
       // Добавляем элемент в DOM
-      const app = document.getElementById('game-modes-container');
+      const app = document.getElementById('app-container');
       if (app) {
         try {
           app.appendChild(footerContainer);
@@ -162,28 +173,6 @@ export function createFooterContainer() {
   while (footerContainer.firstChild) {
     footerContainer.removeChild(footerContainer.firstChild);
   }
-
-  // Создаем кнопки навигации
-  const navigation = ['MARKET', 'EGGS', 'PETS', 'FRIENDS', 'TASKS'];
-
-  navigation.forEach((item, index) => {
-    const button = document.createElement('button');
-    button.textContent = item;
-    button.className = 'navigation-button';
-
-    button.addEventListener('click', () => {
-      // Реализация перехода по кнопкам
-      const gameModesContainer = document.getElementById('game-modes-container');
-      gameModesContainer.textContent = `Вы перешли на страницу ${item}`;
-      highlightActiveButton(navigation[index]);
-    });
-    footerContainer.appendChild(button);
-  });
-}
-
-// Вспомогательная функция для подсветки активной кнопки
-function highlightActiveButton(activeButton) {
-  const buttons = document.querySelectorAll('.navigation-button');
-  buttons.forEach(button => button.classList.remove('active'));
-  activeButton.classList.add('active');
+  // Cоздаем кнопки навигации
+  createNavigationButtons(footerContainer);
 }

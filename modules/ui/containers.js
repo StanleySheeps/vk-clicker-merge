@@ -173,7 +173,4 @@ export function createFooterContainer(onNavigate) {
   while (footerContainer.firstChild) {
     footerContainer.removeChild(footerContainer.firstChild);
   }
-
-  // Создаем кнопки навигации
-createNavigationButtons(onNavigate);
 }

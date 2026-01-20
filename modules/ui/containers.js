@@ -145,7 +145,7 @@ export function createGameModesContainer() {
  * Создаёт контейнер для кнопок навигации
  * @param {HTMLElement} container
  */
-export function createFooterContainer(onNavigate) {
+export function createFooterContainer() {
   let footerContainer = document.getElementById('footer-container');
 
   // Если элемент уже существует, используем его

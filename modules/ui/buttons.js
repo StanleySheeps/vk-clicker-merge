@@ -45,6 +45,7 @@ export function createNavigationButton(mode, onClick) {
  * Создаёт все кнопки навигации и добавляет в контейнер
  * @param {Function} onNavigate
  */
+export function createNavigationButtons(onNavigate) {
 GAME_MODES.forEach(mode => {
   const button = createNavigationButton(mode, () => {
     onNavigate(mode);
@@ -53,6 +54,7 @@ GAME_MODES.forEach(mode => {
   let footerContainer = document.getElementById('footer-container');
   footerContainer.appendChild(button);
 });
+}
 
 /**
  * Вспомогательная функция для подсветки активной кнопки

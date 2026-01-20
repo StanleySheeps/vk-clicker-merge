@@ -1,4 +1,4 @@
-import { createNavigationButtons } from "./buttons.js";
+import { createNavigationButtons, createNavigationButtons } from "./buttons.js";
 
 /**
  * Создаёт или возвращает существующий контейнер приложения

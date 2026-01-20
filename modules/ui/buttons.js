@@ -35,9 +35,7 @@ export function createNavigationButton(mode, onClick) {
 
   // Добавляем обработчик клика
   button.addEventListener('click', () => {
-    if (!mode.locked) {
-      onClick(mode);
-    }
+    if (!mode.locked) onClick();
   });
 
   return button;
@@ -45,23 +43,16 @@ export function createNavigationButton(mode, onClick) {
 
 /**
  * Создаёт все кнопки навигации и добавляет в контейнер
- * @param {HTMLElement} container
  * @param {Function} onNavigate
  */
-export function createNavigationButtons(container, onNavigate) {
-  // Очищаем контейнер перед созданием новых кнопок
-  while (container.firstChild) {
-    container.removeChild(container.firstChild);
-  }
-
-  GAME_MODES.forEach(mode => {
-    const button = createNavigationButton(mode, (selectedMode) => {
-      onNavigate(selectedMode);
-      highlightActiveButton(button);
-    });
-    container.appendChild(button);
+GAME_MODES.forEach(mode => {
+  const button = createNavigationButton(mode, () => {
+    onNavigate(mode);
+    highlightActiveButton(button);
   });
-}
+  let footerContainer = document.getElementById('footer-container');
+  footerContainer.appendChild(button);
+});
 
 /**
  * Вспомогательная функция для подсветки активной кнопки

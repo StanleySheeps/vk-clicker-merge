@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Шаг 5: Создание контейнера для режимов игры
     const gameModesContainer = createGameModesContainer();
 
-    // Шаг 6: Создание футера
+    /* Шаг 6: Создание футера
     createFooterContainer((mode) => {
       if (mode.locked) {
         gameModesContainer.innerHTML = '<p>🔒 Режим временно недоступен</p>';
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         default:
           gameModesContainer.innerHTML = `<h2>${mode.icon} ${mode.text}</h2>`;
       }
-    });
+    }); */
     
 
   } catch (err) {

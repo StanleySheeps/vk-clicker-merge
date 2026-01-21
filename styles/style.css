@@ -3,46 +3,42 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 16px;
 }
 
 body {
-  font-family: 'VK Sans', sans-serif; /* Шрифт VK, fallback — sans-serif */
+  font-family: 'VK Sans', sans-serif;
   background: #e6e8eb;
   color: #2d2e33;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Центрируем #app-container */
+  align-items: flex-start;
   padding: 20px;
   line-height: 1.5;
 }
 
+
 /* === 2. Контейнер приложения — центрирование и ограничение ширины === */
 #app-container {
   width: 100%;
-  max-width: 720px; /* Стандарт VK Mini Apps */
-  margin: 0 auto;
+  max-width: 720px;
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch; /* Дети сами решают, как выравниваться */
+  gap: 16px;
 }
 
 /* === 3. Контейнер пользователя — аватар и приветствие === */
 .user-container {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
-  border-bottom: 1px solid #e6e8eb;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  height: 100px;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 12px 16px; /* Заменяем margin на padding */
+  align-items: center; /* Центрирование по вертикали */
+  justify-content: flex-start; /* Контент — слева */
+  padding: 0 16px;
   z-index: 100;
-  box-sizing: border-box;
 }
 
 .user-info {
@@ -52,6 +48,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0; /* Не сжимается */
 }
 
 .avatar {
@@ -60,7 +57,6 @@ body {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #8dc0ea;
-  display: block;
 }
 
 .user-name {
@@ -68,21 +64,18 @@ body {
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  
-  /* Динамический размер шрифта */
-  font-size: clamp(10px, 4vw, 14px); /* min: 10px, идеально: 4vw, max: 14px */
-  
+  font-size: clamp(10px, 4vw, 14px);
   background-color: rgba(0, 0, 0, 0.7);
   color: #fff;
-  padding: 4px 6px;
+  padding: 4px 8px;
   border-radius: 12px;
   white-space: nowrap;
   max-width: 100%;
   overflow: hidden;
-  text-overflow: ellipsis; /* Только на самый крайний случай */
-  box-sizing: border-box;
-  z-index: 10;
+  text-overflow: ellipsis;
   font-weight: 500;
+  z-index: 10;
+  box-sizing: border-box;
 }
 
 /* === 4. Контейнер режимов игры — центральный блок === */

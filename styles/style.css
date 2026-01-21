@@ -22,35 +22,45 @@ body {
 #app-container {
   width: 100%;
   max-width: 720px;
+  margin: 0 auto;
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: stretch; /* Дети сами решают, как выравниваться */
+  align-items: stretch; /* Ключ: НЕ центрируем дочерние элементы */
   gap: 16px;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* === 3. Контейнер пользователя — аватар и приветствие === */
 .user-container {
   position: relative;
   width: 100%;
+  max-width: 720px;
   height: 100px;
+  margin: 0 auto; /* ← гарантирует центрирование по app-container */
   display: flex;
-  align-items: center; /* Центрирование по вертикали */
-  justify-content: flex-start; /* Контент — слева */
-  padding: 0 16px;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
   z-index: 100;
+  background: white;
+  border-bottom: 1px solid #e6e8eb;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .user-info {
-  position: relative;
+  position: relative; /* ← КЛЮЧ: создаёт контекст для user-name */
   width: 100px;
   height: 100px;
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-shrink: 0; /* Не сжимается */
+  /* Без margin или padding — только 100×100 */
 }
-
 .avatar {
   width: 80px;
   height: 80px;
@@ -61,10 +71,10 @@ body {
 
 .user-name {
   position: absolute;
-  bottom: -10px;
+  bottom: -10px; /* Немного за нижний край */
   left: 50%;
-  transform: translateX(-50%);
-  font-size: clamp(10px, 4vw, 14px);
+  transform: translateX(-50%); /* Центрируем по X */
+  font-size: clamp(10px, 3.5vw, 14px);
   background-color: rgba(0, 0, 0, 0.7);
   color: #fff;
   padding: 4px 8px;

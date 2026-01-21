@@ -91,20 +91,28 @@ export function createUserContainer(user) {
     userContainer.removeChild(userContainer.firstChild);
   }
 
-  // Присваиваем содержимое
-    // Создаем изображение аватара
-  const avatarImg = document.createElement('img');
-  avatarImg.src = user.photo_200 || 'https://vk.com/images/camera_100.png';
-  avatarImg.alt = 'Аватар';
-  avatarImg.className = 'avatar';
+  // Наполняем контейнер информацией
+    // Создаём внутренний контейнер для аватара и имени пользователя
+    const userInfoContainer = document.createElement('div');
+    userInfoContainer.className = 'user-info-container';
+    userInfoContainer.id = 'user-info-container';
 
-    // Создаем заголовок с приветствием
-  const greetingHeader = document.createElement('h1');
-  greetingHeader.textContent = `Привет, ${user.first_name || 'Пользователь'}!`;
+    // Содздаём элемент для аватара
+    const avatarImage = document.createElement('img');
+    avatarImage.src = user.photo_200 || 'https://vk.com/images/camera_100.png';
+    avatarImage.alt = 'Аватар';
+    avatarImage.className = 'avatar'
+    avatarImage.id = 'avatar';
 
-    // Добавляем элементы в контейнер
-    userContainer.appendChild(avatarImg);
-    userContainer.appendChild(greetingHeader);
+    // Создаём элемент для имени пользователя
+    const nameText = document.createElement('p');
+    nameText.className = 'user-name';
+    nameText.textContent = `${user.first_name || ''} ${user.last_name || ''}`.trim() || 'Пользователь';
+
+    userInfoContainer.appendChild(avatarImage);
+    userInfoContainer.appendChild(nameText);
+
+    userContainer.appendChild(userInfoContainer);
 }
 
 /**

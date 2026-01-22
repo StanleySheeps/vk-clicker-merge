@@ -54,8 +54,8 @@ export async function adjustWindowSize(vkBridge) {
 
     const isSupported = await vkBridge.supportsAsync('VKWebAppResizeWindow');
     if (isSupported) {
-      await vkBridge.send('VKWebAppResizeWindow', { width: 800, height: 1000 });
-      console.log('✅ Окно изменено: 800×1000');
+      await vkBridge.send('VKWebAppResizeWindow', { width: 480, height: 800 });
+      console.log('✅ Окно изменено: 480×800');
     }
   } catch (err) {
     console.error('❌ Ошибка изменения окна:', err);

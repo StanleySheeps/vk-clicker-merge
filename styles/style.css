@@ -35,15 +35,11 @@ body {
 /* === 3. Контейнер пользователя — аватар и приветствие === */
 .user-container {
   position: relative;
-  width: 100%;
-  max-width: 720px;
   height: 100px;
-  margin: 0 auto; /* ← гарантирует центрирование по app-container */
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding: 0 16px;
   box-sizing: border-box;
   z-index: 100;
   background: white;
@@ -51,7 +47,7 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-.user-info {
+.user-info-container {
   position: relative; /* ← КЛЮЧ: создаёт контекст для user-name */
   width: 100px;
   height: 100px;
@@ -71,7 +67,7 @@ body {
 
 .user-name {
   position: absolute;
-  bottom: -10px; /* Немного за нижний край */
+  bottom: 0; /* Немного за нижний край */
   left: 50%;
   transform: translateX(-50%); /* Центрируем по X */
   font-size: clamp(10px, 3.5vw, 14px);

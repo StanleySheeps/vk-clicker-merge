@@ -114,59 +114,7 @@ body {
   z-index: 100; /* Сверху всех */
 }
 
-/* === 6. Кнопки навигации — иконки + текст === */
-.navigation-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  padding: 8px 12px;
-  background: transparent;
-  border: none;
-  color: #6d7885;
-  font-size: 12px;
-  line-height: 1;
-  cursor: pointer;
-  transition: color 0.2s ease;
-  flex: 1;
-  max-width: 90px;
-  min-width: 60px;
-}
-
-.navigation-button.active,
-.navigation-button:hover {
-  color: #4c8bf5; /* Синий цвет как в VK */
-}
-
-.navigation-button:active {
-  opacity: 0.7;
-}
-
-.navigation-button.locked {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* Иконка и текст — отдельно */
-.icon {
-  font-size: 20px;
-  line-height: 1;
-}
-
-.label {
-  font-size: 10px;
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-.lock {
-  font-size: 14px;
-  position: absolute;
-  top: 4px;
-  right: 4px;
-}
-
-/* === 7. Контейнер ошибки — заметный, но не агрессивный === */
+/* === 6. Контейнер ошибки — заметный, но не агрессивный === */
 .error-container {
   text-align: center;
   background: #ffebee;
@@ -180,14 +128,14 @@ body {
   margin: 12px auto;
 }
 
-/* === 8. Адаптивность === */
+/* === 7. Адаптивность === */
 @media (max-width: 480px) {
   body {
     padding: 12px;
   }
 
   .user-container,
-  #game-modes-container {
+  #game-modes-container, #footer-container {
     padding: 20px;
     border-radius: 12px;
   }
@@ -195,18 +143,5 @@ body {
   .avatar {
     width: 64px;
     height: 64px;
-  }
-
-  h1 {
-    font-size: 16px;
-  }
-
-  .navigation-button {
-    font-size: 11px;
-    gap: 2px;
-  }
-
-  .icon {
-    font-size: 18px;
   }
 }

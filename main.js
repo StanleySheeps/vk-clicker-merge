@@ -27,24 +27,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Шаг 5: Создание контейнера для режимов игры
     const gameModesContainer = createGameModesContainer();
 
-    /* Шаг 6: Создание футера
-    createFooterContainer((mode) => {
-      if (mode.locked) {
-        gameModesContainer.innerHTML = '<p>🔒 Режим временно недоступен</p>';
-        return;
-      }
-      // Временная мера для демонстрации
-      switch (mode.id) {
-        case 'EGGS':
-          gameModesContainer.innerHTML = '<h2>🥚 Режим сбора яиц</h2><p>Кликай по яйцам!</p>';
-          break;
-        case 'PETS':
-          gameModesContainer.innerHTML = '<h2>🐶 Мои питомцы</h2><p>Здесь будут твои звери</p>';
-          break;
-        default:
-          gameModesContainer.innerHTML = `<h2>${mode.icon} ${mode.text}</h2>`;
-      }
-    }); */
+    // Шаг 6: Создание футера
+    const footerContainer = createFooterContainer();
     
 
   } catch (err) {

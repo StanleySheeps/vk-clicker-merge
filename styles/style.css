@@ -41,7 +41,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: stretch; /* Ключ: НЕ центрируем дочерние элементы */
-  padding: 105px 20px 80px;
+  padding: 110px 20px 80px;
   box-sizing: border-box;
   overflow: hidden;
   /* Скрываем скроллбар */
@@ -113,12 +113,11 @@ body {
 /* === 4. Контейнер режимов игры — центральный блок === */
 #game-modes-container {
   width: 100%;
-  height: calc(100vh - 205px);
+  height: calc(100% - 190px);
   overflow-y: auto;
   text-align: center;
   background: white;
   border-radius: 16px;
-  padding: 40px 32px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   /* Скрываем скроллбар */
   scrollbar-width: none; /* Firefox */

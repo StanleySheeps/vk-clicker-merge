@@ -21,14 +21,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     await adjustWindowSize(vkBridge);
 
     // Шаг 4: Получение информации о пользователе
-    const user = await vkBridge.send('VKWebAppGetUserInfo');
-    const userContainer = createUserContainer(user);
+    try {
+      const user = await vkBridge.send('VKWebAppGetUserInfo');
+      createUserContainer(user);
+    } catch (err) {
+      createUserContainer({ first_name: 'Гость', last_name: '', photo_200: 'https://vk.com/images/camera_200.png' });
+    }
 
     // Шаг 5: Создание контейнера для режимов игры
-    const gameModesContainer = createGameModesContainer();
+    createGameModesContainer();
 
     // Шаг 6: Создание футера
-    const footerContainer = createFooterContainer();
+    createFooterContainer();
     
 
   } catch (err) {

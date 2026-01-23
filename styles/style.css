@@ -101,7 +101,7 @@ body {
 
 /* === 5. Контейнер навигации — фиксированное нижнее меню === */
 #footer-container {
-  position: fixed;
+  position: sticky;
   bottom: 0;
   left: 0;
   height: 250px;

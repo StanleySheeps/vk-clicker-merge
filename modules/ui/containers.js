@@ -1,5 +1,3 @@
-//import { createNavigationButtons } from "./buttons.js";
-
 /**
  * Создаёт или возвращает существующий контейнер приложения
  * @returns {HTMLElement}
@@ -61,6 +59,7 @@ export function createErrorContainer(textContent) {
 /**
  * Создаёт контейнер для пользователя
  * @param {Object} user
+ * @returns {HTMLElement}
  */
 export function createUserContainer(user) {
   let userContainer = document.getElementById('user-container');

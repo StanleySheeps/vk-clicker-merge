@@ -41,7 +41,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: calc(100vw - 40px);
   max-width: 720px;
   margin: 5px 20px 0px;
   height: 100px;
@@ -97,7 +97,7 @@ body {
 /* === 4. Контейнер режимов игры — центральный блок === */
 #game-modes-container {
   width: 100%;
-  height: calc(100vh - 270px);
+  height: calc(100vh - 175px);
   overflow-y: auto;
   text-align: center;
   background: white;
@@ -119,9 +119,9 @@ body {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: calc(100vw - 40px);
   max-width: 720px;
-  margin: 0 20px 5px;
+  margin: 0 20px 0;
   height: 75px;
   display: flex;
   align-items: center;

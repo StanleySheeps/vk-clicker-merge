@@ -113,7 +113,7 @@ body {
 /* === 4. Контейнер режимов игры — центральный блок === */
 #game-modes-container {
   width: 100%;
-  height: calc(100% - 190px);
+  max-height: calc(100% - 190px);
   overflow-y: auto;
   text-align: center;
   background: white;

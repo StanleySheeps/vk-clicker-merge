@@ -18,8 +18,14 @@ body {
   align-items: flex-start;
   padding: 20px;
   line-height: 1.5;
+    /* Скрываем скроллбар */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
 }
 
+  body::-webkit-scrollbar {
+  display: none;
+}
 
 /* === 2. Контейнер приложения — центрирование и ограничение ширины === */
 #app-container {
@@ -34,14 +40,8 @@ body {
   gap: 10px;
   padding: 105px 20px 80px;
   box-sizing: border-box;
-  /* Скрываем скроллбар */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
 }
 
-#app-container::-webkit-scrollbar {
-  display: none;
-}
 
 /* === 3. Контейнер пользователя — аватар и приветствие === */
 .user-container {

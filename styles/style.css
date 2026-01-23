@@ -34,6 +34,13 @@ body {
   gap: 10px;
   padding: 105px 20px 80px;
   box-sizing: border-box;
+  /* Скрываем скроллбар */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+#app-container::-webkit-scrollbar {
+  display: none;
 }
 
 /* === 3. Контейнер пользователя — аватар и приветствие === */
@@ -97,7 +104,7 @@ body {
 /* === 4. Контейнер режимов игры — центральный блок === */
 #game-modes-container {
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 185px);
   overflow-y: auto;
   text-align: center;
   background: white;
@@ -120,8 +127,7 @@ body {
   bottom: 0;
   /*left: 0;*/
   width: calc(100vw - 40px);
-  max-width: 720px;
-  margin: 0 0 5px;
+  /*max-width: 720px;*/
   height: 75px;
   display: flex;
   align-items: center;
@@ -156,8 +162,7 @@ body {
     padding: 12px;
   }
 
-  .user-container,
-  #game-modes-container, #footer-container {
+  #game-modes-container {
     padding: 20px;
     border-radius: 12px;
   }

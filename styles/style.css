@@ -43,12 +43,12 @@ body {
   /*left: 0;*/
   width: calc(100vw - 40px);
   max-width: 720px;
-  margin: 5px 20px 0px;
+  margin: 5px 0 0;
   height: 100px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  /*padding: 0 16px;*/
+  padding: 0 16px;
   box-sizing: border-box;
   z-index: 100;
   background: white;
@@ -97,7 +97,7 @@ body {
 /* === 4. Контейнер режимов игры — центральный блок === */
 #game-modes-container {
   width: 100%;
-  height: calc(100vh - 175px);
+  height: 100vh;
   overflow-y: auto;
   text-align: center;
   background: white;
@@ -121,12 +121,12 @@ body {
   /*left: 0;*/
   width: calc(100vw - 40px);
   max-width: 720px;
-  margin: 0 20px 0;
+  margin: 0 0 5px;
   height: 75px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /*padding: 0 16px;*/
+  padding: 0 16px;
   box-sizing: border-box;
   z-index: 100;
   background: white;

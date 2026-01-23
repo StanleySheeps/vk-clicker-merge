@@ -41,7 +41,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: stretch; /* Ключ: НЕ центрируем дочерние элементы */
-  padding: 110px 20px 85px;
+  padding: 110px 20px 90px;
   box-sizing: border-box;
   overflow: hidden;
   /* Скрываем скроллбар */
@@ -58,11 +58,14 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: calc(100vw - 40px);
+  margin-left: 20px;
+  margin-right: 20px;
   height: 100px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  background: transparent;
   padding: 0 16px;
   box-sizing: border-box;
   z-index: 100;
@@ -129,7 +132,9 @@ body {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100vw;
+  width: calc(100vw - 40px);
+  margin-left: 20px;
+  margin-right: 20px;
   height: 75px;
   display: flex;
   align-items: center;
@@ -160,14 +165,6 @@ body {
 
 /* === 7. Адаптивность === */
 @media (max-width: 480px) {
-  body {
-    padding: 12px;
-  }
-
-  #game-modes-container {
-    padding: 20px;
-    border-radius: 12px;
-  }
 
   .avatar {
     width: 64px;

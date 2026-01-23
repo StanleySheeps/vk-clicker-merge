@@ -6,6 +6,9 @@
   user-select: none; /* Стандартное свойство */
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* Internet Explorer 10+/Edge */  
+}
+
+html {
   /* Скрываем стандартные полосы прокрутки */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE и Edge */
@@ -42,6 +45,7 @@ body {
   gap: 10px;
   padding: 105px 20px 80px;
   box-sizing: border-box;
+  overflow: hidden;
   /* Скрываем скроллбар */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */

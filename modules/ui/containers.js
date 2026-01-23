@@ -1,3 +1,5 @@
+import { createElement } from "react";
+
 /**
  * Создаёт или возвращает существующий контейнер приложения
  * @returns {HTMLElement}

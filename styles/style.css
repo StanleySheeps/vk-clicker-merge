@@ -24,6 +24,7 @@ body {
 /* === 2. Контейнер приложения — центрирование и ограничение ширины === */
 #app-container {
   width: 100%;
+  height: auto;
   max-width: 720px;
   margin: 0 auto;
   position: relative;
@@ -37,7 +38,9 @@ body {
 
 /* === 3. Контейнер пользователя — аватар и приветствие === */
 .user-container {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 100px;
   display: flex;
   align-items: center;
@@ -91,20 +94,29 @@ body {
 /* === 4. Контейнер режимов игры — центральный блок === */
 #game-modes-container {
   width: 100%;
+  height: calc(100vh - 270px);
+  overflow-y: auto;
   text-align: center;
   background: white;
   border-radius: 16px;
   padding: 40px 32px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  /* Скрываем скроллбар */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+/* WebKit: Chrome, Safari, Android, VK App */
+#game-modes-container::-webkit-scrollbar {
+  display: none;
 }
 
 /* === 5. Контейнер навигации — фиксированное нижнее меню === */
 #footer-container {
-  position: sticky;
+  position: fixed;
   bottom: 0;
   left: 0;
-  height: 250px;
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -112,9 +124,12 @@ body {
   box-sizing: border-box;
   z-index: 100;
   background: white;
-  border-radius: 16px;
+  border-radius: 16px 16px 0 0;
   border-top: 1px solid #e6e8eb;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  margin: 0 auto;
+  max-width: 720px;
+  transform: translateZ(0);
 }
 
 /* === 6. Контейнер ошибки — заметный, но не агрессивный === */

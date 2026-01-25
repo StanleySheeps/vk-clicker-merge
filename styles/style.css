@@ -41,7 +41,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: stretch; /* Ключ: НЕ центрируем дочерние элементы */
-  padding: 110px 10px 90px;
+  padding: 100px 5px 90px;
   box-sizing: border-box;
   overflow: hidden;
   /* Скрываем скроллбар */
@@ -58,9 +58,9 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: calc(100vw - 20px);
-  margin-left: 10px;
-  margin-right: 10px;
+  width: calc(100vw - 10px);
+  margin-left: 5px;
+  margin-right: 5px;
   height: 100px;
   display: flex;
   align-items: center;
@@ -131,9 +131,9 @@ body {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: calc(100vw - 20px);
-  margin-left: 10px;
-  margin-right: 10px;
+  width: calc(100vw - 10px);
+  margin-left: 5px;
+  margin-right: 5px;
   height: 75px;
   display: flex;
   align-items: center;
@@ -143,7 +143,6 @@ body {
   z-index: 100;
   background: #737294;
   border-radius: 16px 16px 0 0;
-  border-top: 1px solid #e6e8eb;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
   transform: translateZ(0);
 }

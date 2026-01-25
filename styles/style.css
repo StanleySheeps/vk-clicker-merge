@@ -21,7 +21,7 @@ html::-webkit-scrollbar {
 
 body {
   font-family: 'VK Sans', sans-serif;
-  background: linear-gradient(to bottom, #46346c, #442655);
+  background: linear-gradient(to bottom, #8fcaf2, #a0d5f7);
   color: #2d2e33;
   min-height: 100vh;
   display: flex;
@@ -66,14 +66,13 @@ body {
   align-items: center;
   justify-content: flex-start;
   background: transparent;
-  padding: 0 16px;
   box-sizing: border-box;
   z-index: 100;
 }
 
 .user-info-container {
   position: relative; /* ← КЛЮЧ: создаёт контекст для user-name */
-  width: 125px;
+  width: 100px;
   height: 100px;
   flex-shrink: 0;
   display: flex;
@@ -167,7 +166,7 @@ body {
 @media (max-width: 480px) {
 
   .avatar {
-    width: 64px;
-    height: 64px;
+    width: 48px;
+    height: 48px;
   }
 }
